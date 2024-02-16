@@ -15,6 +15,7 @@ if (!empty($_POST['login']) && !empty($_POST['password'])) {
   if (!empty($user)) {
     echo "прошел авторизацию";
     $show = false;
+    header('Location: index.php');
   } else {
     echo "неверный логин или пароль";
   }
