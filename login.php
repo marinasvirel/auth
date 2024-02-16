@@ -1,8 +1,7 @@
 <?php
-// ⊗ppPmAuAt
-require_once "db.php";
+session_start();
 
-$show = true;
+require_once "db.php";
 
 if (!empty($_POST['login']) && !empty($_POST['password'])) {
   $login = $_POST['login'];
@@ -13,19 +12,16 @@ if (!empty($_POST['login']) && !empty($_POST['password'])) {
   $user = mysqli_fetch_assoc($res);
 
   if (!empty($user)) {
-    echo "прошел авторизацию";
-    $show = false;
+    $_SESSION['flash'] = 'авторизация прошла успешно';
     header('Location: index.php');
+    die();
   } else {
     echo "неверный логин или пароль";
   }
 }
 ?>
 
-<?php if($show): ?>
 <form action="" method="POST">
   <input name="login" placeholder="логин">
   <input name="password" type="password" placeholder="пароль">
   <input type="submit">
-</form>
-<?php endif; ?>
