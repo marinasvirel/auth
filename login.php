@@ -2,6 +2,8 @@
 // ⊗ppPmAuAt
 require_once "db.php";
 
+$show = true;
+
 if (!empty($_POST['login']) && !empty($_POST['password'])) {
   $login = $_POST['login'];
   $password = $_POST['password'];
@@ -12,14 +14,17 @@ if (!empty($_POST['login']) && !empty($_POST['password'])) {
 
   if (!empty($user)) {
     echo "прошел авторизацию";
+    $show = false;
   } else {
     echo "неверный логин или пароль";
   }
 }
 ?>
 
+<?php if($show): ?>
 <form action="" method="POST">
   <input name="login" placeholder="логин">
   <input name="password" type="password" placeholder="пароль">
   <input type="submit">
 </form>
+<?php endif; ?>
