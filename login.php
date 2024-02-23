@@ -23,3 +23,4 @@ if (!empty($_POST['login']) && !empty($_POST['password'])) {
   <input name="login" placeholder="логин">
   <input name="password" type="password" placeholder="пароль">
   <input type="submit">
+</form>
