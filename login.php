@@ -12,9 +12,7 @@ if (!empty($_POST['login']) && !empty($_POST['password'])) {
   $user = mysqli_fetch_assoc($res);
 
   if (!empty($user)) {
-    $_SESSION['flash'] = 'авторизация прошла успешно';
-    header('Location: index.php');
-    die();
+    $_SESSION['auth'] = true;
   } else {
     echo "неверный логин или пароль";
   }
