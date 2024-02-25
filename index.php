@@ -3,8 +3,8 @@
 
 session_start();
 
-echo "текст для всех<br>";
-
 if (!empty($_SESSION['auth'])) {
-  echo 'текст только для авторизованного пользователя';
-} 
+  echo "Привет, " . $_SESSION['login'] . "!<br>";
+} else {
+  echo "<a href='login.php'>Авторизация</a>";
+}
