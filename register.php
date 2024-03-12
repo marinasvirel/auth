@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once "db.php";
 
 if (!empty($_POST['login']) and !empty($_POST['password'])) {
@@ -10,6 +11,8 @@ if (!empty($_POST['login']) and !empty($_POST['password'])) {
 
   $query = "INSERT INTO users SET email='$email', login='$login', password='$password', date='$date', created='$created'";
   mysqli_query($link, $query);
+  $_SESSION['auth'] = true;
+  $_SESSION['login'] = $login;
 }
 ?>
 
