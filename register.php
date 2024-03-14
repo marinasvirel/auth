@@ -13,6 +13,9 @@ if (!empty($_POST['login']) and !empty($_POST['password'])) {
   mysqli_query($link, $query);
   $_SESSION['auth'] = true;
   $_SESSION['login'] = $login;
+
+  $id = mysqli_insert_id($link);
+  $_SESSION['id'] = $id; 
 }
 ?>
 
