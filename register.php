@@ -8,14 +8,19 @@ if (!empty($_POST['login']) and !empty($_POST['password'])) {
   $password = $_POST['password'];
   $date = $_POST['date'];
   $created = date('Y.m.d');
+  $confirm = $_POST['confirm'];
 
-  $query = "INSERT INTO users SET email='$email', login='$login', password='$password', date='$date', created='$created'";
-  mysqli_query($link, $query);
-  $_SESSION['auth'] = true;
-  $_SESSION['login'] = $login;
+  if ($password == $confirm) {
+    $query = "INSERT INTO users SET email='$email', login='$login', password='$password', date='$date', created='$created'";
+    mysqli_query($link, $query);
+    $_SESSION['auth'] = true;
+    $_SESSION['login'] = $login;
 
-  $id = mysqli_insert_id($link);
-  $_SESSION['id'] = $id; 
+    $id = mysqli_insert_id($link);
+    $_SESSION['id'] = $id;
+  } else {
+    echo "пароли не совпадают";
+  }
 }
 ?>
 
@@ -23,6 +28,7 @@ if (!empty($_POST['login']) and !empty($_POST['password'])) {
   <input type="email" name="email" placeholder="E-mail">
   <input name="login" placeholder="логин">
   <input name="password" type="password" placeholder="пароль">
+  <input name="confirm" type="password" placeholder="повторите пароль">
   <input type="date" name="date">
   <input type="submit">
 </form>
