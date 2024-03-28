@@ -1,5 +1,5 @@
 <?php
-// ⊗ppPmAuLCh
+// ⊗ppPmAuHs
 
 session_start();
 

@@ -5,7 +5,7 @@ require_once "db.php";
 
 if (!empty($_POST['login']) && !empty($_POST['password'])) {
   $login = $_POST['login'];
-  $password = $_POST['password'];
+  $password = md5($_POST['password']);
 
   $query = "SELECT * FROM users WHERE `login`='$login' AND `password`='$password'";
   $res = mysqli_query($link, $query);

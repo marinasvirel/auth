@@ -5,10 +5,10 @@ require_once "db.php";
 if (!empty ($_POST['login']) and !empty ($_POST['password'])) {
   $email = $_POST['email'];
   $login = $_POST['login'];
-  $password = $_POST['password'];
+  $password = md5($_POST['password']);
   $date = $_POST['date'];
   $created = date('Y.m.d');
-  $confirm = $_POST['confirm'];
+  $confirm = md5($_POST['confirm']);
 
   $query = "SELECT * FROM users WHERE login='$login'";
   $user = mysqli_fetch_assoc(mysqli_query($link, $query));
@@ -28,6 +28,8 @@ if (!empty ($_POST['login']) and !empty ($_POST['password'])) {
   } else {
     echo "логин занят";
   }
+} else {
+  echo "заполните логин и пароль";
 }
 ?>
 
