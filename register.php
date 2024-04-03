@@ -1,14 +1,17 @@
 <?php
 session_start();
 require_once "db.php";
+require_once "functions.php";
+
+$salt = generateSalt();
 
 if (!empty ($_POST['login']) and !empty ($_POST['password'])) {
   $email = $_POST['email'];
   $login = $_POST['login'];
-  $password = md5($_POST['password']);
+  $password = md5($salt . $_POST['password']);
   $date = $_POST['date'];
   $created = date('Y.m.d');
-  $confirm = md5($_POST['confirm']);
+  $confirm = md5($salt . $_POST['confirm']);
 
   $query = "SELECT * FROM users WHERE login='$login'";
   $user = mysqli_fetch_assoc(mysqli_query($link, $query));
