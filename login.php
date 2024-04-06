@@ -5,17 +5,24 @@ require_once "db.php";
 
 if (!empty($_POST['login']) && !empty($_POST['password'])) {
   $login = $_POST['login'];
-  $password = md5($_POST['password']);
 
-  $query = "SELECT * FROM users WHERE `login`='$login' AND `password`='$password'";
+  $query = "SELECT * FROM users WHERE `login`='$login'";
   $res = mysqli_query($link, $query);
   $user = mysqli_fetch_assoc($res);
 
   if (!empty($user)) {
-    $_SESSION['auth'] = true;
-    $_SESSION['login'] = $login;
+    $salt = $user['salt'];
+    $hash = $user['password'];
+    $password = md5($salt . $_POST['password']);
+    if ($password == $hash) {
+      $_SESSION['auth'] = true;
+      $_SESSION['login'] = $login;
+      echo "авторизация прошла успешно";
+    } else {
+      echo "пароль не подходит";
+    }
   } else {
-    echo "неверный логин или пароль";
+    echo "пользователя с таким логином нет";
   }
 }
 ?>

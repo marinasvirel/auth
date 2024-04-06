@@ -18,7 +18,7 @@ if (!empty ($_POST['login']) and !empty ($_POST['password'])) {
 
   if (empty ($user)) {
     if ($password == $confirm) {
-      $query = "INSERT INTO users SET email='$email', login='$login', password='$password', date='$date', created='$created'";
+      $query = "INSERT INTO users SET email='$email', login='$login', salt='$salt', password='$password', date='$date', created='$created'";
       mysqli_query($link, $query);
       $_SESSION['auth'] = true;
       $_SESSION['login'] = $login;
