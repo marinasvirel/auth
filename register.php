@@ -1,24 +1,21 @@
 <?php
 session_start();
 require_once "db.php";
-require_once "functions.php";
-
-$salt = generateSalt();
 
 if (!empty ($_POST['login']) and !empty ($_POST['password'])) {
   $email = $_POST['email'];
   $login = $_POST['login'];
-  $password = md5($salt . $_POST['password']);
+  $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+  $confirm = $_POST['confirm'];
   $date = $_POST['date'];
   $created = date('Y.m.d');
-  $confirm = md5($salt . $_POST['confirm']);
 
   $query = "SELECT * FROM users WHERE login='$login'";
   $user = mysqli_fetch_assoc(mysqli_query($link, $query));
 
   if (empty ($user)) {
-    if ($password == $confirm) {
-      $query = "INSERT INTO users SET email='$email', login='$login', salt='$salt', password='$password', date='$date', created='$created'";
+    if ($_POST['password'] == $confirm) {
+      $query = "INSERT INTO users SET email='$email', login='$login', password='$password', date='$date', created='$created'";
       mysqli_query($link, $query);
       $_SESSION['auth'] = true;
       $_SESSION['login'] = $login;

@@ -11,10 +11,8 @@ if (!empty($_POST['login']) && !empty($_POST['password'])) {
   $user = mysqli_fetch_assoc($res);
 
   if (!empty($user)) {
-    $salt = $user['salt'];
     $hash = $user['password'];
-    $password = md5($salt . $_POST['password']);
-    if ($password == $hash) {
+    if (password_verify($_POST['password'], $hash)) {
       $_SESSION['auth'] = true;
       $_SESSION['login'] = $login;
       echo "авторизация прошла успешно";

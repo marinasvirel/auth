@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Апр 06 2024 г., 07:02
+-- Время создания: Апр 10 2024 г., 07:26
 -- Версия сервера: 8.0.30
 -- Версия PHP: 8.1.9
 
@@ -31,7 +31,6 @@ CREATE TABLE `users` (
   `id` int NOT NULL,
   `email` varchar(100) NOT NULL,
   `login` varchar(100) NOT NULL,
-  `salt` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
   `date` date NOT NULL,
   `created` date NOT NULL
@@ -41,8 +40,8 @@ CREATE TABLE `users` (
 -- Дамп данных таблицы `users`
 --
 
-INSERT INTO `users` (`id`, `email`, `login`, `salt`, `password`, `date`, `created`) VALUES
-(1, 'mail.mail@re.ru', 'user', 'zp*)SV-o', '5838fe133ba2241099db1bc701ee7951', '2024-04-10', '2024-04-06');
+INSERT INTO `users` (`id`, `email`, `login`, `password`, `date`, `created`) VALUES
+(1, 'mail.mail@re.ru', 'user', '$2y$10$vpE3KDRl/a/Fw.IsPxatyeTvleFIzBFkNgnfoqpylQwv.FHWuTqvC', '2024-04-11', '2024-04-10');
 
 --
 -- Индексы сохранённых таблиц
