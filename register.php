@@ -3,6 +3,9 @@ session_start();
 require_once "db.php";
 
 if (!empty ($_POST['login']) and !empty ($_POST['password'])) {
+  $name = $_POST['name'];
+  $surname = $_POST['surname'];
+  $patronymic = $_POST['patronymic'];
   $email = $_POST['email'];
   $login = $_POST['login'];
   $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
@@ -15,7 +18,7 @@ if (!empty ($_POST['login']) and !empty ($_POST['password'])) {
 
   if (empty ($user)) {
     if ($_POST['password'] == $confirm) {
-      $query = "INSERT INTO users SET email='$email', login='$login', password='$password', date='$date', created='$created'";
+      $query = "INSERT INTO users SET name='$name', surname='$surname', patronymic='$patronymic',email='$email', login='$login', password='$password', date='$date', created='$created'";
       mysqli_query($link, $query);
       $_SESSION['auth'] = true;
       $_SESSION['login'] = $login;
@@ -34,6 +37,9 @@ if (!empty ($_POST['login']) and !empty ($_POST['password'])) {
 ?>
 
 <form action="" method="POST">
+  <input type="text" name="name" placeholder="имя">
+  <input type="text" name="surname" placeholder="фамилия">
+  <input type="text" name="patronymic" placeholder="отчество">
   <input type="email" name="email" placeholder="E-mail">
   <input name="login" placeholder="логин">
   <input name="password" type="password" placeholder="пароль">
