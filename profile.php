@@ -1,5 +1,6 @@
 <?php
 require_once "db.php";
+require_once "functions.php";
 
 $id = $_GET['id'];
 
@@ -11,5 +12,6 @@ echo $user['name'] . "<br>";
 echo $user['surname'] . "<br>";
 echo $user['patronymic'] . "<br>";
 echo $user['login'] . "<br>";
-echo $user['date'] . "<br>";
+echo calculate_age($user['date']);
+
 
