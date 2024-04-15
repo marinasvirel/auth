@@ -14,7 +14,7 @@ if (!empty($_POST['login']) && !empty($_POST['password'])) {
     $hash = $user['password'];
     if (password_verify($_POST['password'], $hash)) {
       $_SESSION['auth'] = true;
-      $_SESSION['login'] = $login;
+      $_SESSION['id'] = $user['id'];
       echo "авторизация прошла успешно";
     } else {
       echo "пароль не подходит";
