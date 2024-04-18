@@ -27,5 +27,6 @@ if (!empty($_POST['old_password']) && !empty($_POST['new_password'])) {
 <form action="" method="POST">
   <input name="old_password" placeholder="старый пароль">
   <input name="new_password" placeholder="новый пароль">
+  <input type="password" name="new_password_confirm" placeholder="подтвердите новый пароль">
   <input type="submit" name="submit">
 </form>
