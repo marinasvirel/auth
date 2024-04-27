@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Апр 12 2024 г., 12:12
+-- Время создания: Апр 27 2024 г., 08:23
 -- Версия сервера: 8.0.30
 -- Версия PHP: 8.1.9
 
@@ -36,16 +36,17 @@ CREATE TABLE `users` (
   `login` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
   `date` date NOT NULL,
-  `created` date NOT NULL
+  `created` date NOT NULL,
+  `status` varchar(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
 -- Дамп данных таблицы `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `surname`, `patronymic`, `email`, `login`, `password`, `date`, `created`) VALUES
-(1, 'Марина', 'Зинченко', 'Юрьевна', 'mail.mail@re.ru', 'user', '$2y$10$nF6.nGv4gCdDqGjw0hUCR.ydrzBAJTxgI1WC57g8dXw23YZZZwiYy', '1983-11-14', '2024-04-12'),
-(2, 'Иван', 'Иванов', 'Иванович', 'mail.mail@red.ru', 'user2', '$2y$10$BJu0.RaO667f33jwfYLu/uOxmCQCbk6Aeuh/AipE/OUXt4WJRitmu', '1988-04-10', '2024-04-12');
+INSERT INTO `users` (`id`, `name`, `surname`, `patronymic`, `email`, `login`, `password`, `date`, `created`, `status`) VALUES
+(5, 'Марина', 'Зинченко', 'Юрьевна', 'mail.mail@re.ru', 'marina', '$2y$10$gQV9ZXVUFOFdRvTQCVok1uejTteAzrHxNXZwYIWdTqWexFXkcGSd.', '2024-04-03', '2024-04-27', 'admin'),
+(6, 'Иван', 'Иванов', 'Иванович', 'mail.mail@red.ru', 'ivan', '$2y$10$mNMbcGoZ6uJ2xPUVpKwd3OhN8DXTi12FTK0OnEvx6Iw5udQH0cleG', '2024-04-16', '2024-04-27', 'user');
 
 --
 -- Индексы сохранённых таблиц
@@ -65,7 +66,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
