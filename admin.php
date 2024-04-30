@@ -10,13 +10,19 @@ $res = mysqli_query($link, $query);
 
 <?php if (!empty($_SESSION['auth']) and $_SESSION['status'] === 'admin'): ?>
 
-  <table border="2px">
+  <table border="2px" style="width: 50%;">
     <tr>
       <th>логин</th>
       <th>статус</th>
     </tr>
     <?php while ($users = mysqli_fetch_assoc($res)): ?>
-      <tr>
+      <?php
+      $color = "green";
+      if ($users['status'] == "admin") {
+        $color = "red";
+      }
+      ?>
+      <tr style="background-color: <?= $color ?>">
         <td><?= $users['login'] ?></td>
         <td><?= $users['status'] ?></td>
         <td><a href="?del=<?= $users['id'] ?>">удалить</a></td>
