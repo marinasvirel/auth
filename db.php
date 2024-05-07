@@ -12,3 +12,11 @@ $query = "SELECT * FROM users";
 $res = mysqli_query($link, $query);
 
 for ($users = []; $row = mysqli_fetch_assoc($res); $users[] = $row);
+
+// Таблица users_status
+$query = "SELECT users.*, statuses.name as status FROM users
+LEFT JOIN statuses
+ON users.status_id=statuses.id";
+$res = mysqli_query($link, $query);
+
+for ($users_status = []; $row = mysqli_fetch_assoc($res); $users_status[] = $row);

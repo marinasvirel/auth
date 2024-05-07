@@ -19,17 +19,17 @@ if (isset($_GET['del'])) {
       <th>логин</th>
       <th>статус</th>
     </tr>
-    <?php foreach ($users as $user): ?>
+    <?php foreach ($users_status as $user): ?>
       <?php
       if (isset($_GET['right']) && $user['status'] == "admin") {
         $id = $_GET['right'];
-        $query = "UPDATE users SET status='user' WHERE id=$id";
+        $query = "UPDATE users SET status_id=1 WHERE id=$id";
         mysqli_query($link, $query);
       }
 
       if (isset($_GET['right']) && $user['status'] == "user") {
         $id = $_GET['right'];
-        $query = "UPDATE users SET status='admin' WHERE id=$id";
+        $query = "UPDATE users SET status_id=2 WHERE id=$id";
         mysqli_query($link, $query);
       }
 
