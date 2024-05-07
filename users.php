@@ -1,6 +1,7 @@
 <?php
 
 require_once "db.php";
+require_once "header.php";
 
 $query = "SELECT * FROM users";
 $res = mysqli_query($link, $query);

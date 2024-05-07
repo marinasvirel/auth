@@ -24,38 +24,30 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `users`
+-- Структура таблицы `statuses`
 --
 
-CREATE TABLE `users` (
+CREATE TABLE `statuses` (
   `id` int NOT NULL,
-  `name` varchar(100) NOT NULL,
-  `surname` varchar(100) NOT NULL,
-  `patronymic` varchar(100) NOT NULL,
-  `email` varchar(100) NOT NULL,
-  `login` varchar(100) NOT NULL,
-  `password` varchar(100) NOT NULL,
-  `date` date NOT NULL,
-  `created` date NOT NULL,
-  `status_id` varchar(11) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NOT NULL
+  `name` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 
 --
--- Дамп данных таблицы `users`
+-- Дамп данных таблицы `statuses`
 --
 
-INSERT INTO `users` (`id`, `name`, `surname`, `patronymic`, `email`, `login`, `password`, `date`, `created`, `status_id`) VALUES
-(1, 'Иван', 'Иванов', 'Иванович', 'mail.mail@re.ru', 'ivan', '$2y$10$xtRqWE6xJsHtLYJxuCLcd.Isx0VXr8MNsNw5uXdaVyVNXrTuBlrea', '2024-05-01', '2024-05-07', '1'),
-(2, 'Петр', 'Петров', 'Петрович', 'mail.mail@red.ru', 'petr', '$2y$10$.2X7SeSaYebRV/tGSIfGo.vWnrstuRf8q/pIV/v1ulGTKLCWyKylO', '2024-05-08', '2024-05-07', '1');
+INSERT INTO `statuses` (`id`, `name`) VALUES
+(1, 'user'),
+(2, 'admin');
 
 --
 -- Индексы сохранённых таблиц
 --
 
 --
--- Индексы таблицы `users`
+-- Индексы таблицы `statuses`
 --
-ALTER TABLE `users`
+ALTER TABLE `statuses`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -63,9 +55,9 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT для таблицы `users`
+-- AUTO_INCREMENT для таблицы `statuses`
 --
-ALTER TABLE `users`
+ALTER TABLE `statuses`
   MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 

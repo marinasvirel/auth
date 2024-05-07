@@ -6,7 +6,9 @@ require_once "db.php";
 if (!empty($_POST['login']) && !empty($_POST['password'])) {
   $login = $_POST['login'];
 
-  $query = "SELECT * FROM users WHERE `login`='$login'";
+  $query = "SELECT users.*, statuses.name as status FROM users 
+  LEFT JOIN statuses 
+  ON users.status_id=statuses.id WHERE login='$login'";
   $res = mysqli_query($link, $query);
   $user = mysqli_fetch_assoc($res);
 

@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once "db.php";
+require_once "header.php";
 
 $id = $_SESSION['id'];
 $query = "SELECT * FROM users WHERE id='$id'";
